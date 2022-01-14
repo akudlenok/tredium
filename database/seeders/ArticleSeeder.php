@@ -10,9 +10,11 @@ class ArticleSeeder extends Seeder
 {
     public function run()
     {
+        $tag = Tag::factory()->create();
         Article::factory(20)
-            ->has(Tag::factory())
             ->hasTags(5)
-            ->create();
+            ->create()->each(function (Article $article) use ($tag) {
+                $article->tags()->attach($tag->id);
+            });
     }
 }
