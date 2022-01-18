@@ -81,7 +81,7 @@ class ArticleController extends Controller
         $likeCount += $this->getCacheByKey($likeCountKey);
         return response()->json([
             'like_count' => $likeCount > 0 ? $likeCount : 0,
-            'is_can_liked' => !is_null($like->deleted_at)
+            'is_can_liked' => $like->trashed()
         ]);
     }
 

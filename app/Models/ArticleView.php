@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ArticleView extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'article_id',
         'user_id'

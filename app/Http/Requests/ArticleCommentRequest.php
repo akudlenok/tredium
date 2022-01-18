@@ -19,6 +19,7 @@ class ArticleCommentRequest extends FormRequest
     {
         return [
             'article_id.required' => 'Укажите статью.',
+            'article_id.exists' => 'Статья не найдена.',
             'subject.required' => 'Укажите тему сообщения.',
             'body.required' => 'Укажите сообщение.',
             'subject.max' => 'Тема сообщение не может быть больше :max символов.',

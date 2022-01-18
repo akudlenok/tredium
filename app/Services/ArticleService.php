@@ -16,7 +16,7 @@ class ArticleService
     {
         $query = Article::query();
         if ($orderReverse) {
-            $query->latest();
+            $query->latest('id');
         }
 
         return $query->paginate($perPage);
@@ -49,6 +49,7 @@ class ArticleService
             ->selectRaw('sum(if(deleted_at is null, 1, -1)) as count_likes')
             ->whereBetween('updated_at', [$start->toDateTimeString(), $end->toDateTimeString()])
             ->groupBy('article_id')
+            ->withTrashed()
             ->get()
             ->keyBy('article_id');
     }

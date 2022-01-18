@@ -18,7 +18,7 @@ class CreateArticleCommentJob implements ShouldQueue
     public int $tries = 25;
     public int $maxExceptions = 3;
 
-    public function __construct($data, $userId)
+    public function __construct(array $data, int $userId)
     {
         $this->data = $data;
         $this->userId = $userId;
